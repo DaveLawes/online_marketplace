@@ -22,32 +22,31 @@ describe 'Features' do
     end
 
     context 'given promotional rules' do
-
-      let(:co) { Checkout.new(promotional_rules) }
+      let(:co2) { Checkout.new(promotional_rules) }
 
       it 'satisfies test case 1' do
-        co.scan(item1)
-        co.scan(item2)
-        co.scan(item3)
+        co2.scan(item1)
+        co2.scan(item2)
+        co2.scan(item3)
 
-        expect(co.total).to eq '£66.78'
+        expect(co2.total).to eq '£66.78'
       end
 
       it 'satisfies test case 2' do
-        co.scan(item1)
-        co.scan(item3)
-        co.scan(item1)
+        co2.scan(item1)
+        co2.scan(item3)
+        co2.scan(item1)
 
-        expect(co.total).to eq '£36.95'
+        expect(co2.total).to eq '£36.95'
       end
 
       it 'satisfies test case 3' do
-        co.scan(item1)
-        co.scan(item2)
-        co.scan(item1)
-        co.scan(item3)
+        co2.scan(item1)
+        co2.scan(item2)
+        co2.scan(item1)
+        co2.scan(item3)
 
-        expect(co.total).to eq '£73.76'
+        expect(co2.total).to eq '£73.76'
       end
     end
   end
