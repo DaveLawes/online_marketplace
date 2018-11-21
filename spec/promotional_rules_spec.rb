@@ -1,17 +1,19 @@
 require 'promotional_rules'
 
 describe PromotionalRules do
-
-  let(:item) { Item.new(1, 'chair', 9.25) }
-  # let(:item) { double Item, price: 9.25 }
+  let(:item) { double :item_double, price: 9.25, product_code: 1 }
   let(:mapped_basket) { { item => 2 } }
+  let(:unit_quantities) { { 1 => 2 } }
+  let(:unit_prices) { { 1 => 8.5 } }
+
+  subject { described_class.new(60, 0.1, unit_quantities, unit_prices) }
 
   describe '#change_unit_price' do
     context 'given the quantity exceeds the specified amount' do
 
       it 'updates the unit price' do
+        expect(item).to receive(:price=).with(8.5)
         subject.change_unit_price(mapped_basket)
-        expect(item.price).to eq 8.5
       end
 
     end

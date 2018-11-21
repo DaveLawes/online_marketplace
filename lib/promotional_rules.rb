@@ -1,10 +1,10 @@
 class PromotionalRules
 
-  def initialize
-    @spend_over = 60
-    @discount = 0.1
-    @unit_quantities = { 1 => 2 }
-    @unit_prices = { 1 => 8.5 }
+  def initialize(spend_over, discount, unit_quantities, unit_prices)
+    @spend_over = spend_over
+    @discount = discount
+    @unit_quantities = unit_quantities
+    @unit_prices = unit_prices
   end
 
   def change_unit_price(mapped_basket)
@@ -19,8 +19,9 @@ class PromotionalRules
   private
 
   def update_price(item, quantity)
-    @unit_quantities.each do | product_code, quantity_threshold |
+    @unit_quantities.each do |product_code, quantity_threshold|
       if item.product_code == product_code && quantity >= quantity_threshold
+        p item.price
         item.price = @unit_prices[item.product_code]
       end
     end

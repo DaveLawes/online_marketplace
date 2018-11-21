@@ -6,7 +6,6 @@ describe 'Features' do
   let(:item1) { Item.new(1, 'Very cheap chair', 9.25) }
   let(:item2) { Item.new(2, 'Little table', 45) }
   let(:item3) { Item.new(3, 'Funky light', 19.95) }
-  let(:promotional_rules) { PromotionalRules.new }
 
   describe 'Checkout returns total price of basket' do
     context 'given no promotional rules' do
@@ -22,6 +21,7 @@ describe 'Features' do
     end
 
     context 'given promotional rules' do
+      let(:promotional_rules) { PromotionalRules.new(60, 0.1, { 1 => 2 }, { 1 => 8.5 }) }
       let(:co2) { Checkout.new(promotional_rules) }
 
       it 'satisfies test case 1' do
@@ -50,7 +50,7 @@ describe 'Features' do
       end
 
       context 'given new promotional rules' do
-        let(:new_rules) { PromotionalRules.new }
+        let(:new_rules) { PromotionalRules.new(65, 0.15, { 1 => 2 }, { 1 => 8.5 }) }
         let(:co3) { Checkout.new(new_rules) }
         # discount of 15% for total > £65
 
@@ -65,7 +65,5 @@ describe 'Features' do
       end
     end
   end
-
-
 
 end

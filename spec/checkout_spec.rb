@@ -24,7 +24,12 @@ describe Checkout do
     end
 
     context 'given promotional_rules' do
-      let(:promotional_rules) { double :promotional_rules }
+      let(:promotional_rules) { double :promotional_rules,
+                                spend_over: 60,
+                                discount: 0.1,
+                                unit_quantities: { 1 => 2 },
+                                unit_prices: { 1 => 8.5 }
+      }
       subject { described_class.new(promotional_rules) }
 
       it 'calculates the correct total price' do
