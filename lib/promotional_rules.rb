@@ -21,7 +21,6 @@ class PromotionalRules
   def update_price(item, quantity)
     @unit_quantities.each do |product_code, quantity_threshold|
       if item.product_code == product_code && quantity >= quantity_threshold
-        p item.price
         item.price = @unit_prices[item.product_code]
       end
     end
