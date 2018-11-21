@@ -19,8 +19,20 @@ describe PromotionalRules do
 
   describe '#apply_discount' do
 
-    it 'applies the percentage discount to the total' do
-      expect(subject.apply_discount(100)).to eq 90 
+    context 'given total is greater than specified cap' do
+
+      it 'applies the percentage discount to the total' do
+        expect(subject.apply_discount(100)).to eq 90
+      end
+
+    end
+
+    context 'given total is less than specified cap' do
+
+      it 'does not apply the percentage discount to the total' do
+        expect(subject.apply_discount(55)).to eq 55 
+      end
+
     end
 
   end
