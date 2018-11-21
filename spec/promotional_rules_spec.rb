@@ -20,7 +20,7 @@ describe PromotionalRules do
   describe '#apply_discount' do
 
     it 'applies the percentage discount to the total' do
-      expect(subject.apply_discount(100)).to eq 90
+      expect(subject.apply_discount(100)).to eq 90 
     end
 
   end
