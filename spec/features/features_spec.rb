@@ -2,7 +2,7 @@ require 'checkout'
 
 describe 'Features' do
 
-  let(:co) { Checkout.new}
+  let(:co) { Checkout.new }
   let(:item1) { Item.new(1, 'Very cheap chair', 9.25) }
   let(:item2) { Item.new(2, 'Little table', 45) }
   let(:item3) { Item.new(3, 'Funky light', 19.95) }
