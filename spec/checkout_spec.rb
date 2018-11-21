@@ -2,12 +2,12 @@ require 'checkout'
 
 describe Checkout do
 
-  let(:item) {  }
+  let(:item) { double Item }
 
   describe '#scan' do
 
     it 'adds item to basket' do
-      expect(subject.scan(item)).to equal [item]
+      expect(subject.scan(item)[0]).to equal item
     end
 
   end
