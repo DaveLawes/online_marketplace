@@ -10,15 +10,17 @@ class Checkout
   end
 
   def total
-    return calculate_total if @promotional_rules.nil?
+    mapped_basket = @basket.each_with_object(Hash.new(0)) { |k, v| v[k] += 1 }
+    return calculate_total(mapped_basket) if @promotional_rules.nil?
+
   end
 
   private
 
-  def calculate_total
+  def calculate_total(mapped_basket)
     total = 0
-    @basket.each do |item|
-      total += item.price
+    mapped_basket.each do |item, quantity|
+      total += item.price * quantity
     end
     "£#{sprintf('%.2f', total)}"
   end
