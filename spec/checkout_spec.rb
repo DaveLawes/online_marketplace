@@ -28,12 +28,12 @@ describe Checkout do
       subject { described_class.new(promotional_rules) }
 
       it 'calculates the correct total price' do
-        subject.scan(item)
-        subject.scan(item)
+        10.times { subject.scan(item) }
         allow(promotional_rules).to receive(:change_unit_price)
+        allow(promotional_rules).to receive(:apply_discount)
         allow(item).to receive(:price).and_return(8.5)
 
-        expect(subject.total).to eq '£17.00'
+        expect(subject.total).to eq '£76.50'
       end
     end
   end
