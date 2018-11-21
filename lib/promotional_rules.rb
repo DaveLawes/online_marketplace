@@ -11,6 +11,7 @@ class PromotionalRules
 
   def apply_discount(total)
     total = total * (1 - 0.1) if total > 60
+    total
   end
 
 end
