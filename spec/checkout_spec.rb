@@ -30,7 +30,7 @@ describe Checkout do
       it 'calculates the correct total price' do
         10.times { subject.scan(item) }
         allow(promotional_rules).to receive(:change_unit_price)
-        allow(promotional_rules).to receive(:apply_discount)
+        allow(promotional_rules).to receive(:apply_discount).and_return(76.5)
         allow(item).to receive(:price).and_return(8.5)
 
         expect(subject.total).to eq '£76.50'

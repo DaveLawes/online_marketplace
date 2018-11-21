@@ -16,6 +16,7 @@ class Checkout
     else
       @promotional_rules.change_unit_price(mapped_basket)
       total = calculate_total(mapped_basket)
+      total = @promotional_rules.apply_discount(total)
     end
     pretty_print_total(total)
   end
