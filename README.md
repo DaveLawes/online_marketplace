@@ -1,8 +1,13 @@
 # online_marketplace
 
+[![Build Status](https://travis-ci.org/DaveLawes/online_marketplace.svg?branch=master)](https://travis-ci.org/DaveLawes/online_marketplace)
+
 This is a Ruby app that calculates the total price of items from an online marketplace. Given items are scanned into the checkout, and there are attached promotional rules, the total price is returned.
 
-[![Build Status](https://travis-ci.org/DaveLawes/online_marketplace.svg?branch=master)](https://travis-ci.org/DaveLawes/online_marketplace)
+The app has 100% test coverage and no linter offenses.
+
+<img src="/public/coverage.png">
+<img src="/public/linter.png">
 
 ## How to Use
 
@@ -14,10 +19,27 @@ Clone this repo to your local machine. Run `bundle install` to make sure all gem
 
 #### How to Test
 
-From the root of the project directory run rspec. This will run all feature and unit tests.
+From the root of the project directory run `rspec`. This will run all feature and unit tests.
 
 #### How to Run
 
+The app can be run from a REPL, I chose irb. Below describes the steps to run, and the expected output, from within irb.
+
+- Require all files
+<img src="/public/require_files.png">
+          
+- Define the items available on the marketplace
+<img src="/public/define_items.png">
+
+- Define the promotional rules. In an attempt to make my design flexible to changing promotions, the rules are defined as an object that takes 4 parameters:
+1. The total amount the user has to spend before a discount is applied
+2. The percentage discount to be applied (expressed as a decimal)
+3. A hash containing keys = product_code, values = quantity in basket before unit cost changes
+4. A hash containing keys = product_code, values = new unit price
+<img src="/public/define_rules.png">
+     
+- Define the items you want to scan and request the total
+<img src="/public/checkout.png">
 
 ## User Stories
 
@@ -79,4 +101,6 @@ The following describes my steps when creating the solution:
 
 ## Areas of Improvement
 
+I tried to make my design easy to change by specifying the rules upon instantiation of the 'PromotionalRules' class. Perhaps this could be improved to account for an increase in discount percentage for greater total values (currently there is just one threshold for which a discount is applied).
 
+The state of my items are defined within objects of the Item class. I think the state of the items would be better saved within a database. It feels a bit clunky when setting up the app in irb (having to define each item...), saving the items in a database would make the user interaction with the app a little easier.
