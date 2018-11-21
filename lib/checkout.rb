@@ -25,9 +25,7 @@ class Checkout
 
   def calculate_total(mapped_basket)
     total = 0
-    mapped_basket.each do |item, quantity|
-      total += item.price * quantity
-    end
+    mapped_basket.each { |item, quantity| total += item.price * quantity }
     total
   end
 
