@@ -7,13 +7,13 @@ describe 'Feature: No Promotions' do
 
   describe 'Checkout returns total price of basket' do
 
-      it 'calculates the total price correctly' do
-        co.scan(item1)
-        co.scan(item2)
-        co.scan(item3)
+    it 'calculates the total price correctly' do
+      co.scan(item1)
+      co.scan(item2)
+      co.scan(item3)
 
-        expect(co.total).to eq '£74.20'
-      end
+      expect(co.total).to eq '£74.20'
+    end
 
   end
 

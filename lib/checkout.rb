@@ -11,8 +11,8 @@ class Checkout
   end
 
   def total
-    mapped_basket = @basket.each_with_object(Hash.new(0)) { |k, v| v[k] += 1 }
-    @promotional_rules.nil? ? calculate_total(mapped_basket) : apply_rules(mapped_basket)
+    mapped = @basket.each_with_object(Hash.new(0)) { |k, v| v[k] += 1 }
+    @promotional_rules.nil? ? calculate_total(mapped) : apply_rules(mapped)
     pretty_print_total
   end
 
