@@ -1,7 +1,8 @@
 class Checkout
 
-  def initialize
+  def initialize(promotional_rules = nil)
     @basket = []
+    @promotional_rules = promotional_rules
   end
 
   def scan(item)
@@ -9,6 +10,12 @@ class Checkout
   end
 
   def total
+    return calculate_total if @promotional_rules.nil?
+  end
+
+  private
+
+  def calculate_total
     total = 0
     @basket.each do |item|
       total += item.price
