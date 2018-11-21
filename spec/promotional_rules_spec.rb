@@ -18,7 +18,6 @@ describe PromotionalRules do
   end
 
   describe '#apply_discount' do
-
     context 'given total is greater than specified cap' do
 
       it 'applies the percentage discount to the total' do
@@ -34,7 +33,6 @@ describe PromotionalRules do
       end
 
     end
-
   end
 
 end
