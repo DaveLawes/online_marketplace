@@ -2,6 +2,8 @@
 
 This is a Ruby app that calculates the total price of items from an online marketplace. Given items are scanned into the checkout, and there are attached promotional rules, the total price is returned.
 
+[![Build Status](https://travis-ci.org/DaveLawes/online_marketplace.svg?branch=master)](https://travis-ci.org/DaveLawes/online_marketplace)
+
 ## How to Use
 
 #### How to Install
