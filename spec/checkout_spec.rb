@@ -1,4 +1,4 @@
-require './lib/checkout'
+require 'checkout'
 
 describe Checkout do
 
