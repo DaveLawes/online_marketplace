@@ -48,7 +48,24 @@ describe 'Features' do
 
         expect(co2.total).to eq '£73.76'
       end
+
+      context 'given new promotional rules' do
+        let(:new_rules) { PromotionalRules.new }
+        let(:co3) { Checkout.new(new_rules) }
+        # discount of 15% for total > £65
+
+        it 'calculates the correct total' do
+          co3.scan(item1)
+          co3.scan(item2)
+          co3.scan(item3)
+
+          expect(co3.total).to eq '£63.07'
+        end
+
+      end
     end
   end
+
+
 
 end
